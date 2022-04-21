@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\SessionMiddleware;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
@@ -20,8 +21,9 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 Route::middleware([
     'web',
-    InitializeTenancyByDomain::class,
-    PreventAccessFromCentralDomains::class,
+    SessionMiddleware::class,
+//    InitializeTenancyByDomain::class,
+//    PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', function () {
         dd(tenant('id'), \App\Models\User::all()->toArray());
