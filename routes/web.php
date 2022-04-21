@@ -16,6 +16,9 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 */
 
 //Route::get('/', function () {
-//    dd(tenant());
+//    session()->put("_tenant_id", "arham");
+//    session()->save();
+
+//    dump(session()->get('_tenant_id'));
 //    return view('welcome');
 //});
